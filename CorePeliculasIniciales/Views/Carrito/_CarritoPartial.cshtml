@@ -1,0 +1,16 @@
+﻿
+<div class="card mt-3">
+    <div class="card-body">
+        @if (Context.Session.GetString("PeliculasCompradas") != null) {
+            <h5 class="card-title">Carrito : @Context.Session.GetString("PeliculasCompradas")</h5>
+        } else {
+            <h5 class="card-title">Carrito : 0</h5>
+        }
+        @if (Context.Session.GetString("PrecioTotal") != null) {
+            <h5 class="card-title">Precio Total : @Context.Session.GetString("PrecioTotal") €</h5>
+        } else {
+            <h5 class="card-title">Precio Total  : 0</h5>
+        }
+        <a class="text-dark" asp-action="FinalizarCompra" asp-controller="Peliculas">Finalizar Compra</a>
+    </div>
+</div>

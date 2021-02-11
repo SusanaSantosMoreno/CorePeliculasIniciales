@@ -1,0 +1,14 @@
+﻿@model Pelicula 
+<h3>@Model.Titulo</h3>
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Imagen</label>
+        <input type="file" class="form-control" name="imagen">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Precio</label>
+        <input type="text" class="form-control" name="precio" value="@Model.Precio">
+    </div>
+    <button type="submit" class="btn btn-dark">Modificar</button>
+</form>
+

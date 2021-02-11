@@ -1,0 +1,26 @@
+﻿@model List<Pelicula>
+@{
+    String precioFinal = ViewData["PrecioFinal"] as String;
+}
+
+<h2>Precio Total: @precioFinal €</h2>
+@if (Model.Count != 0) {
+<div class="row ml-1">
+    @foreach (Pelicula pelicula in Model) {
+        <div class="card col-md-3 p-0 mr-1 mb-3" style="width: 18rem;">
+            <img src="~/images/@pelicula.Foto" class="card-img-top" alt="@pelicula.Titulo" />
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a class="text-dark" asp-action="DetallePelicula" asp-controller="Peliculas"
+                       asp-route-idPelicula="@pelicula.IdPelicula">
+                        @pelicula.Titulo
+                    </a>
+                </h5>
+                <h6 class="card-subtitle mb-2 text-muted">@pelicula.Precio €</h6>
+                <a class="text-dark text-right" asp-action="FinalizarCompra" 
+                   asp-controller="Peliculas" asp-route-eliminado="@pelicula.IdPelicula">Eliminar</a>
+            </div>
+        </div>
+    }
+</div>
+}

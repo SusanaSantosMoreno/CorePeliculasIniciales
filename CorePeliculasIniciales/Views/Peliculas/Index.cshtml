@@ -1,0 +1,37 @@
+﻿@model List<PeliculasPag>
+@{ 
+    int numPagina = 1;
+    int registros = (int)ViewData["registros"];
+}
+<div class="row">
+    @foreach(PeliculasPag pelicula in Model) {
+        <div class="card col-md-3 p-0 mr-1 mb-3" style="width: 18rem;">
+            <img src="~/images/@pelicula.Foto" class="card-img-top" alt="@pelicula.Titulo"/>
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a class="text-dark" asp-action="DetallePelicula" asp-controller="Peliculas" 
+                       asp-route-idPelicula="@pelicula.IdPelicula">
+                        @pelicula.Titulo
+                    </a>
+                </h5>
+                <h6 class="card-subtitle mb-2 text-muted">@pelicula.Precio €</h6>
+            </div>
+        </div>
+    }
+</div>
+<div class="text-center mb-5 w-75">
+    @for (int i = 1; i <= registros; i += 6) {
+        @if (ViewData["Genero"] != null) {
+            <a asp-action="Index"
+               asp-controller="Peliculas" asp-route-posicion="@i" asp-route-idGenero="@ViewData["Genero"]"
+               class="text-dark" style="font-size: 1rem">@numPagina |</a>
+        } else {
+            <a asp-action="Index"
+               asp-controller="Peliculas" asp-route-posicion="@i"
+               class="text-dark" style="font-size: 1rem">@numPagina |</a>
+        }
+
+        numPagina += 1;
+    }
+</div>
+

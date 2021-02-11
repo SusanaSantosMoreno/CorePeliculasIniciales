@@ -1,0 +1,26 @@
+﻿@model Pelicula
+<div class="row">
+    <div class="col-4">
+        <img src="~/images/@Model.Foto" class="card-img-top" alt="@Model.Titulo" />
+    </div>
+    <div class="col-8">
+        <h4>@Model.Titulo · <span class="col text-muted">@Model.Duracion min</span></h4>
+        <div class="row mb-3">
+            <a class="col-2 text-dark font-weight-bold" asp-action="Index" asp-controller="Peliculas"> Volver </a>
+            <a class="col-2 text-dark font-weight-bold" asp-action="EditPelicula" asp-controller="Peliculas"
+               asp-route-idPelicula="@Model.IdPelicula"> Modificar </a>
+            <a class="col text-dark font-weight-bold" asp-action="Index" asp-controller="Peliculas"
+               asp-route-peliculaComprada="@Model.IdPelicula"> Comprar </a>
+        </div>
+        <h6>Reparto:</h6>
+        <p>@Model.Actores</p>
+        <h6>Director:</h6>
+        <p>@Model.Director</p>
+        <h6>Argumento:</h6>
+        <p>@Model.Argumento</p>
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/@Model.YouTube" 
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+                gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</div>
