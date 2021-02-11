@@ -107,8 +107,13 @@ namespace CorePeliculasIniciales.Controllers {
 
         [HttpPost]
         public async Task<IActionResult> EditPelicula (int? idPelicula, IFormFile imagen, int precio) {
-            await this.uploadService.UploadFileAsync(imagen, Folders.Images);
-            this.repository.ActualizarPelicula((int)idPelicula, precio, imagen.FileName);
+            if(imagen != null) {
+                await this.uploadService.UploadFileAsync(imagen, Folders.Images);
+                this.repository.ActualizarPelicula((int)idPelicula, precio, imagen.FileName);
+            } else {
+                Pelicula pelicula = this.repository.GetPelicula((int)idPelicula);
+                this.repository.ActualizarPelicula((int)idPelicula, precio, pelicula.Foto);
+            }
             return RedirectToAction("Index");
         }
     }

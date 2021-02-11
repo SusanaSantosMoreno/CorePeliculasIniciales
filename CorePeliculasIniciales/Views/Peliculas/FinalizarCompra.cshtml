@@ -16,7 +16,7 @@
                         @pelicula.Titulo
                     </a>
                 </h5>
-                <h6 class="card-subtitle mb-2 text-muted">@pelicula.Precio €</h6>
+                <h6 class="card-subtitle mb-2 text-muted">@pelicula.Precio € - @pelicula.Duracion min</h6>
                 <a class="text-dark text-right" asp-action="FinalizarCompra" 
                    asp-controller="Peliculas" asp-route-eliminado="@pelicula.IdPelicula">Eliminar</a>
             </div>
